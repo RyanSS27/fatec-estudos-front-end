@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <title>Cadastro de Produto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Cadastro de Produto</h2>
-        <form action="index.php?action=cadastrar" method="POST" class="w-50 mt-3">
+    <div class="glass-container container-sm">
+        <h2 class="text-center mb-4 text-white">Cadastro de <span class="text-accent">Produto</span></h2>
+        <form action="index.php?action=cadastrar" method="POST">
             <div class="mb-3">
-                <label class="form-label">Nome do Produto:</label>
-                <input type="text" name="nome" class="form-control" required>
+                <label for="nome" class="form-label">Nome do Produto:</label>
+                <input type="text" id="nome" name="nome" class="form-control custom-input" required>
             </div>
             
             <div class="mb-3">
-                <label class="form-label">Preço:</label>
-                <input type="text" name="preco" class="form-control" required>
+                <label for="preco" class="form-label">Preço:</label>
+                <input type="text" id="preco" name="preco" class="form-control custom-input" required>
             </div>
             
-            <div class="mb-3">
-                <label class="form-label">Categoria:</label>
-                <select name="id_categoria" class="form-select" required>
+            <div class="mb-4">
+                <label for="id_categoria" class="form-label">Categoria:</label>
+                <select id="id_categoria" name="id_categoria" class="form-select custom-input" required>
                     <option value="1">Bebidas</option>
                     <option value="2">Padaria</option>
                     <option value="3">Limpeza</option>
                 </select>
             </div>
             
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <a href="index.php?action=menu" class="btn btn-secondary">Voltar</a>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-accent">Cadastrar</button>
+                <a href="index.php?action=menu" class="btn btn-outline-light">Voltar ao Menu</a>
+            </div>
         </form>
     </div>
 </body>

@@ -4,45 +4,54 @@
     <meta charset="UTF-8">
     <title>Pesquisar Produto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Pesquisar Produto</h2>
+    <div class="glass-container container-md">
+        <h2 class="text-center mb-4 text-white">Pesquisar <span class="text-accent">Produto</span></h2>
         
-        <form action="index.php?action=pesquisar" method="POST" class="w-50 mt-3">
-            <div class="input-group mb-3">
-                <input type="text" name="nome" class="form-control" placeholder="Informe o nome do produto" required>
-                <button type="submit" class="btn btn-primary">Pesquisar</button>
+        <form action="index.php?action=pesquisar" method="POST" class="mb-4">
+            <div class="mb-3 text-start">
+                <label for="nomePesquisa" class="form-label">Nome do Produto:</label>
+                <div class="input-group">
+                    <input type="text" id="nomePesquisa" name="nome" class="form-control custom-input" placeholder="Informe o nome do produto..." required>
+                    <button type="submit" class="btn btn-accent px-4">Pesquisar</button>
+                </div>
             </div>
         </form>
 
         <?php if (isset($produtos)): ?>
             <?php if (count($produtos) > 0): ?>
-                <table class="table table-striped table-bordered mt-4">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Nome do Produto</th>
-                            <th>Preço</th>
-                            <th>Categoria</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($produtos as $p): ?>
-                        <tr>
-                            <td><?= $p['nome'] ?></td>
-                            <td>R$ <?= number_format($p['preco'], 2, ',', '.') ?></td>
-                            <td><?= $p['categoria'] ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table custom-table table-striped table-bordered text-center align-middle">
+                        <thead class="custom-table-dark">
+                            <tr>
+                                <th>Nome do Produto</th>
+                                <th>Preço</th>
+                                <th>Categoria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($produtos as $p): ?>
+                            <tr>
+                                <td><?= $p['nome'] ?></td>
+                                <td>R$ <?= number_format($p['preco'], 2, ',', '.') ?></td>
+                                <td><?= $p['categoria'] ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             <?php else: ?>
-                <div class="alert alert-warning mt-4">Nenhum produto foi localizado.</div>
+                <div class="alert text-center custom-alert">
+                    Nenhum produto foi localizado.
+                </div>
             <?php endif; ?>
         <?php endif; ?>
         
-        <br>
-        <a href="index.php?action=menu" class="btn btn-secondary mt-3">Voltar ao Menu</a>
+        <div class="text-center mt-3">
+            <a href="index.php?action=menu" class="btn btn-outline-light px-4">Voltar ao Menu</a>
+        </div>
     </div>
 </body>
 </html>
