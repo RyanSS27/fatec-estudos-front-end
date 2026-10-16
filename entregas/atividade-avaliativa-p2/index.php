@@ -21,6 +21,14 @@ switch ($action) {
         $controller->consultar();
         break;
 
+    case 'exibirPesquisa':
+        $controller->exibirPesquisa();
+        break;
+
+    case 'pesquisar':
+        $controller->pesquisar();
+        break;
+
     default:
         require_once __DIR__ . '/view/menu.php';
         break;

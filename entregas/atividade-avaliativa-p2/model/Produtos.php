@@ -25,5 +25,15 @@ class Produtos {
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function pesquisar($nome) {
+        $sql = "SELECT p.nome, p.preco, c.nome as categoria 
+                FROM produtos p 
+                INNER JOIN categorias c ON p.id_categoria = c.id
+                WHERE p.nome LIKE :nome";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':nome' => "%$nome%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

@@ -9,7 +9,6 @@ class ProdutosController {
 
     public function cadastrar() {
         $nome = $_POST['nome'];
-        // Converte a vírgula do preço em ponto para o MySQL não truncar os dados
         $preco = str_replace(',', '.', $_POST['preco']);
         $id_categoria = $_POST['id_categoria'];
 
@@ -24,6 +23,19 @@ class ProdutosController {
         $model = new Produtos();
         $produtos = $model->consultar();
         require_once __DIR__ . '/../view/consulta.php';
+    }
+
+    public function exibirPesquisa() {
+        require_once __DIR__ . '/../view/pesquisar.php';
+    }
+
+    public function pesquisar() {
+        $nome = $_POST['nome'] ?? '';
+        
+        $model = new Produtos();
+        $produtos = $model->pesquisar($nome);
+        
+        require_once __DIR__ . '/../view/pesquisar.php';
     }
 }
 ?>
